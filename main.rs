@@ -36,23 +36,23 @@ fn all_primes_to(val: usize) -> Vec<usize>
         if checked_values[i] { continue; }
         else
         {
+            primes.push(i);
             // Set a base, which index aggregates by
             // and a second counter (i^2), which will be
             // increase until val is reached
-            let base = i;
             let mut j = i * i;
             while j < val
             {
                 // set each value to true, ie. non-prime
                 checked_values[j] = true;
-                j += base;
+                j += i;
             } 
         }  
     }
 
     // Finally, take all non-flagged bools, pushing
     // their indices onto returned prime collection
-    for i in 2..val
+    for i in max..val
     {
         if !checked_values[i] 
         {
